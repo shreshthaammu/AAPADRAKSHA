@@ -30,3 +30,44 @@ html.dark body {
   background: #020817;
   color: #e2e8f0;
 }
+
+.auth-gate {
+  position: relative;
+  overflow: hidden;
+  background: #08111b;
+}
+
+.auth-gate-grid {
+  position: absolute;
+  inset: 0;
+  opacity: 0.22;
+  background-image: linear-gradient(rgba(148, 163, 184, 0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(148, 163, 184, 0.08) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(to bottom, black, transparent 85%);
+}
+
+.auth-gate-glow {
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.2;
+  pointer-events: none;
+}
+
+.auth-gate-glow-red {
+  top: -180px;
+  right: -120px;
+  background: #dc2626;
+}
+
+.auth-gate-glow-blue {
+  bottom: -240px;
+  left: -160px;
+  background: #2563eb;
+}
+
+.auth-gate-panel {
+  backdrop-filter: blur(16px);
+}

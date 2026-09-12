@@ -58,6 +58,7 @@ interface SidebarProps {
   unreadNotificationsCount: number;
   isOpen: boolean;
   onCloseMobile: () => void;
+  onLogout: () => void;
 }
 
 export const Sidebar: React.FC<SidebarProps> = ({
@@ -66,7 +67,8 @@ export const Sidebar: React.FC<SidebarProps> = ({
   isAuthorityMode,
   unreadNotificationsCount,
   isOpen,
-  onCloseMobile
+  onCloseMobile,
+  onLogout
 }) => {
   const navSections = isAuthorityMode
     ? [
@@ -235,6 +237,14 @@ export const Sidebar: React.FC<SidebarProps> = ({
           <div className="text-center text-[10px] text-slate-400">
             AAPADRAKSHA Operations
           </div>
+          <button
+            type="button"
+            onClick={onLogout}
+            className="flex w-full items-center justify-center gap-2 rounded-lg px-2 py-2 text-[11px] font-semibold text-slate-500 transition-colors hover:bg-red-50 hover:text-red-600 dark:hover:bg-red-950/30 dark:hover:text-red-300"
+          >
+            <LogOut className="h-3.5 w-3.5" />
+            Lock access
+          </button>
         </div>
       </aside>
     </>

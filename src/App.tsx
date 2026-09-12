@@ -27,6 +27,7 @@ import { Navbar } from "./components/Navbar";
 import { Sidebar, TabType } from "./components/Sidebar";
 import { EmergencyAlertBanner } from "./components/EmergencyAlertBanner";
 import { SOSModal } from "./components/SOSModal";
+import { AuthGate } from "./components/AuthGate";
 
 // Pages
 import { DashboardPage } from "./pages/DashboardPage";
@@ -71,7 +72,7 @@ import {
   updateAuthorityAlert
 } from "./services/api";
 
-export default function App() {
+function DashboardApp({ onLogout }: { onLogout: () => void }) {
   // Navigation & View Mode
   const [activeTab, setActiveTab] = useState<NavTab>("dashboard");
   const [mode, setMode] = useState<AppMode>(() => {
@@ -414,6 +415,7 @@ export default function App() {
           unreadNotificationsCount={unreadCount}
           isOpen={isMobileSidebarOpen}
           onCloseMobile={() => setIsMobileSidebarOpen(false)}
+          onLogout={onLogout}
         />
 
         {/* Dynamic Main Content Container */}
@@ -598,4 +600,8 @@ export default function App() {
       />
     </div>
   );
+}
+
+export default function App() {
+  return <AuthGate>{onLogout => <DashboardApp onLogout={onLogout} />}</AuthGate>;
 }

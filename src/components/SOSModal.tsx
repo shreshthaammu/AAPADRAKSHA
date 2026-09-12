@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { AlertOctagon, PhoneCall, Share2, Users, MapPin, Volume2, VolumeX, X, CheckCircle2 } from "lucide-react";
 
 interface SOSModalProps {
@@ -17,45 +17,39 @@ export const SOSModal: React.FC<SOSModalProps> = ({
   onNavigateToShelters
 }) => {
   const [isSirenPlaying, setIsSirenPlaying] = useState(false);
-  const [audioCtx, setAudioCtx] = useState<AudioContext | null>(null);
-  const [oscillator, setOscillator] = useState<OscillatorNode | null>(null);
-  const [gainNode, setGainNode] = useState<GainNode | null>(null);
+  const audioRef = useRef<{ context: AudioContext; oscillator: OscillatorNode; modulation: OscillatorNode; gain: GainNode } | null>(null);
   const [dispatchedFamily, setDispatchedFamily] = useState(false);
   const [sharedLocation, setSharedLocation] = useState(false);
 
   // Web Audio API emergency siren
   const toggleSiren = () => {
     if (isSirenPlaying) {
-      if (oscillator) {
-        try {
-          oscillator.stop();
-          oscillator.disconnect();
-        } catch (e) {}
-      }
+      stopSiren();
       setIsSirenPlaying(false);
     } else {
       try {
         const ctx = new (window.AudioContext || (window as any).webkitAudioContext)();
         const osc = ctx.createOscillator();
+        const modulation = ctx.createOscillator();
+        const modulationDepth = ctx.createGain();
         const gain = ctx.createGain();
 
         osc.type = "sawtooth";
-        // Siren frequency modulation
         const now = ctx.currentTime;
-        osc.frequency.setValueAtTime(600, now);
-        osc.frequency.linearRampToValueAtTime(1100, now + 0.6);
-        osc.frequency.linearRampToValueAtTime(600, now + 1.2);
-        osc.frequency.linearRampToValueAtTime(1100, now + 1.8);
-        osc.frequency.linearRampToValueAtTime(600, now + 2.4);
+        osc.frequency.setValueAtTime(800, now);
+        modulation.type = "sine";
+        modulation.frequency.setValueAtTime(0.7, now);
+        modulationDepth.gain.setValueAtTime(320, now);
+        modulation.connect(modulationDepth);
+        modulationDepth.connect(osc.frequency);
 
-        gain.gain.setValueAtTime(0.2, now);
+        gain.gain.setValueAtTime(0.16, now);
         osc.connect(gain);
         gain.connect(ctx.destination);
         osc.start();
+        modulation.start();
 
-        setAudioCtx(ctx);
-        setOscillator(osc);
-        setGainNode(gain);
+        audioRef.current = { context: ctx, oscillator: osc, modulation, gain };
         setIsSirenPlaying(true);
       } catch (err) {
         console.warn("Audio Context failed:", err);
@@ -63,21 +57,28 @@ export const SOSModal: React.FC<SOSModalProps> = ({
     }
   };
 
+  function stopSiren() {
+    const audio = audioRef.current;
+    if (!audio) return;
+    try {
+      audio.gain.gain.cancelScheduledValues(audio.context.currentTime);
+      audio.gain.gain.setTargetAtTime(0, audio.context.currentTime, 0.03);
+      audio.oscillator.stop(audio.context.currentTime + 0.12);
+      audio.modulation.stop(audio.context.currentTime + 0.12);
+      audio.oscillator.disconnect();
+      audio.modulation.disconnect();
+      void audio.context.close();
+    } catch {
+      // Audio nodes may already be stopped by the browser.
+    }
+    audioRef.current = null;
+  }
+
   useEffect(() => {
     return () => {
-      if (oscillator) {
-        try {
-          oscillator.stop();
-          oscillator.disconnect();
-        } catch (e) {}
-      }
-      if (audioCtx) {
-        try {
-          audioCtx.close();
-        } catch (e) {}
-      }
+      stopSiren();
     };
-  }, [oscillator, audioCtx]);
+  }, []);
 
   if (!isOpen) return null;
 

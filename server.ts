@@ -981,15 +981,22 @@ app.get("/api/shelters", (_req: Request, res: Response) => {
 app.get("/api/emergency-services", (_req: Request, res: Response) => {
   res.json({
     services: [
-      { id: "EM-01", name: "National Emergency Unified Helpline", phone: "112", category: "Unified Emergency", distance: "Instant Dispatch", status: "24x7 Active" },
-      { id: "EM-02", name: "NDMA National Disaster Control Room", phone: "1078", category: "Disaster Management", distance: "Central HQ", status: "Active" },
-      { id: "EM-03", name: "State Emergency Operation Centre (SEOC)", phone: "1070", category: "Disaster Management", distance: "Secretariat Desk", status: "Active" },
-      { id: "EM-04", name: "Telangana SDRF / NDRF 10th Battalion", phone: "+91 40 2345 0111", category: "Flood Rescue & Boats", distance: "2.8 km (Staged)", status: "Boats Deployed" },
-      { id: "EM-05", name: "Emergency Ambulance Services (EMRI)", phone: "108", category: "Ambulance", distance: "Nearest unit: 4 mins", status: "High Priority" },
-      { id: "EM-06", name: "Fire & Disaster Rescue Command", phone: "101", category: "Fire & Rescue", distance: "1.6 km (Station #4)", status: "Active" },
-      { id: "EM-07", name: "Osmania General Hospital Trauma Centre", phone: "+91 40 2460 0121", category: "Hospitals", distance: "1.4 km", status: "Emergency Wards Open" },
-      { id: "EM-08", name: "Gandhi Hospital Disaster Triage", phone: "+91 40 2750 5566", category: "Hospitals", distance: "5.1 km", status: "Emergency Wards Open" },
-      { id: "EM-09", name: "Police Emergency Control", phone: "100", category: "Police", distance: "Rapid Response Unit", status: "Active" }
+      { id: "EM-01", name: "National Emergency Unified Helpline", phone: "112", category: "Unified Emergency", distance: "Instant Dispatch", status: "24x7 Active", address: "India-wide emergency dispatch", coordinates: [17.3850, 78.4867] },
+      { id: "EM-02", name: "NDMA National Disaster Control Room", phone: "1078", category: "Disaster Management", distance: "Central HQ", status: "Active", address: "NDMA Bhawan, New Delhi", coordinates: [28.6139, 77.2090] },
+      { id: "EM-03", name: "State Emergency Operation Centre (SEOC)", phone: "1070", category: "Disaster Management", distance: "Secretariat Desk", status: "Active", address: "Telangana Secretariat, Hyderabad", coordinates: [17.4065, 78.4772] },
+      { id: "EM-04", name: "Telangana SDRF / NDRF 10th Battalion", phone: "+91 40 2345 0111", category: "Flood Rescue & Boats", distance: "2.8 km (Staged)", status: "Boats Deployed", address: "Regional Response Base, Hyderabad", coordinates: [17.3774, 78.4896] },
+      { id: "EM-05", name: "Emergency Ambulance Services (EMRI)", phone: "108", category: "Ambulance", distance: "Nearest unit: 4 mins", status: "High Priority", address: "Hyderabad city dispatch network", coordinates: [17.3850, 78.4867] },
+      { id: "EM-06", name: "Fire & Disaster Rescue Command", phone: "101", category: "Fire & Rescue", distance: "1.6 km (Station #4)", status: "Active", address: "Fire Station No. 4, Hyderabad", coordinates: [17.3950, 78.4900] },
+      { id: "EM-07", name: "Osmania General Hospital Trauma Centre", phone: "+91 40 2460 0121", category: "Hospitals", distance: "1.4 km", status: "Emergency Wards Open", address: "Afzal Gunj, Hyderabad", coordinates: [17.3714, 78.4804] },
+      { id: "EM-08", name: "Gandhi Hospital Disaster Triage", phone: "+91 40 2750 5566", category: "Hospitals", distance: "5.1 km", status: "Emergency Wards Open", address: "Musheerabad, Secunderabad", coordinates: [17.4214, 78.5011] },
+      { id: "EM-09", name: "Police Emergency Control", phone: "100", category: "Police", distance: "Rapid Response Unit", status: "Active", address: "Hyderabad Police emergency control", coordinates: [17.3850, 78.4867] },
+      { id: "EM-10", name: "GHMC Monsoon Central Control Room", phone: "+91 40 2111 1111", category: "Municipal Command", distance: "3.4 km", status: "Command Active", address: "Tank Bund Road, Hyderabad", coordinates: [17.4239, 78.4738] },
+      { id: "EM-11", name: "Telangana State Disaster Response Force", phone: "+91 40 2345 6789", category: "Rescue Operations", distance: "6.2 km", status: "Standby", address: "Amberpet, Hyderabad", coordinates: [17.3857, 78.5110] },
+      { id: "EM-12", name: "108 Emergency Ambulance Fleet", phone: "108", category: "Ambulance Services", distance: "Nearest unit: 4 mins", status: "24x7 Dispatch Active", address: "Hyderabad city ambulance network", coordinates: [17.3850, 78.4867] },
+      { id: "EM-13", name: "Red Cross Telangana Emergency Response", phone: "+91 40 2322 3633", category: "NGO Relief & First Aid", distance: "3.8 km", status: "Relief Teams Ready", address: "Himayatnagar, Hyderabad", coordinates: [17.4014, 78.4867] },
+      { id: "EM-14", name: "SATHI Disaster Relief Volunteers", phone: "+91 90000 11228", category: "NGO Rescue Volunteers", distance: "5.1 km", status: "Boat & Food Support", address: "Amberpet Relief Coordination Hub", coordinates: [17.3857, 78.5110] },
+      { id: "EM-15", name: "Government Blood Bank Emergency Desk", phone: "+91 40 2460 0121", category: "Blood Bank & Medical Aid", distance: "1.4 km", status: "Stock Verification Available", address: "Osmania General Hospital, Afzal Gunj", coordinates: [17.3714, 78.4804] },
+      { id: "EM-16", name: "Community Kitchen & Relief Supplies", phone: "+91 80080 1078", category: "Food & Relief Distribution", distance: "2.6 km", status: "Food Packets Dispatching", address: "Nampally Relief Supply Centre", coordinates: [17.3933, 78.4653] }
     ]
   });
 });

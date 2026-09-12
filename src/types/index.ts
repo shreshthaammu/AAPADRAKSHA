@@ -157,6 +157,9 @@ export interface EmergencyServiceItem {
   category: string;
   distance: string;
   status: string;
+  address?: string;
+  coordinates?: [number, number];
+  website?: string;
 }
 
 export interface InfrastructureItem {

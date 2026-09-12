@@ -66,7 +66,7 @@ export const LiveMapPage: React.FC<LiveMapPageProps> = ({
       {/* Main Grid: Map (8 cols) + Zone Details & Actions (4 cols) */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 h-[calc(100vh-14rem)] min-h-[580px]">
         {/* Left: GIS Map View */}
-        <div className="lg:col-span-8 h-full rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm relative">
+        <div className="lg:col-span-8 h-full min-h-[420px] rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm relative">
           <LiveMap
             center={selectedState.center}
             zoom={selectedState.zoom}

@@ -3,6 +3,11 @@ import L from "leaflet";
 import { Layers, ShieldAlert, Home, AlertCircle, Compass } from "lucide-react";
 import { ZoneData, ShelterItem, CitizenReportItem } from "../types";
 
+const mapTilerKey = (import.meta as ImportMeta & { env?: { VITE_MAPTILER_KEY?: string } }).env?.VITE_MAPTILER_KEY;
+const tileUrl = mapTilerKey
+  ? `https://api.maptiler.com/maps/streets-v2/{z}/{x}/{y}.png?key=${encodeURIComponent(mapTilerKey)}`
+  : "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png";
+
 interface LiveMapProps {
   center: [number, number];
   zoom: number;
@@ -50,13 +55,13 @@ export const LiveMap: React.FC<LiveMapProps> = ({
         center: center,
         zoom: zoom,
         zoomControl: false,
-        attributionControl: false
+        attributionControl: true
       });
 
-      // CartoDB Positron / OSM style tiles
-      L.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png", {
+      L.tileLayer(tileUrl, {
         maxZoom: 19,
-        subdomains: "abcd"
+        ...(mapTilerKey ? {} : { subdomains: "abcd" }),
+        attribution: mapTilerKey ? "&copy; MapTiler &copy; OpenStreetMap contributors" : "&copy; OpenStreetMap contributors &copy; CARTO"
       }).addTo(map);
 
       L.control.zoom({ position: "bottomright" }).addTo(map);
@@ -76,6 +81,24 @@ export const LiveMap: React.FC<LiveMapProps> = ({
       clearTimeout(timer);
     };
   }, [center, zoom]);
+
+  useEffect(() => {
+    const map = mapInstanceRef.current;
+    const container = mapContainerRef.current;
+    if (!map || !container || typeof ResizeObserver === "undefined") return;
+
+    const observer = new ResizeObserver(() => map.invalidateSize({ pan: false }));
+    observer.observe(container);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      mapInstanceRef.current?.remove();
+      mapInstanceRef.current = null;
+      layerGroupRef.current = null;
+    };
+  }, []);
 
   // Render Overlays
   useEffect(() => {
@@ -162,6 +185,7 @@ export const LiveMap: React.FC<LiveMapProps> = ({
     // 4. Shelters Markers
     if (activeLayers.shelters && shelters.length > 0) {
       shelters.forEach(sh => {
+        if (!Array.isArray(sh.coordinates) || sh.coordinates.length !== 2) return;
         const shelterIcon = L.divIcon({
           className: "custom-shelter-marker",
           html: `<div style="background-color:#059669;color:white;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 5px rgba(0,0,0,0.3);border:2px solid white;font-size:14px;font-weight:bold;">🏠</div>`,
@@ -185,7 +209,8 @@ export const LiveMap: React.FC<LiveMapProps> = ({
     // 5. Citizen Reports Markers
     if (activeLayers.reports && reports.length > 0) {
       reports.forEach(rep => {
-        const isFlooded = rep.category.includes("Flood") || rep.severity === "CRITICAL";
+        if (!Array.isArray(rep.coordinates) || rep.coordinates.length !== 2) return;
+        const isFlooded = rep.category.toLowerCase().includes("flood") || rep.severity === "CRITICAL";
         const iconColor = isFlooded ? "#dc2626" : "#d97706";
         const iconSymbol = isFlooded ? "🌊" : "⚠️";
 
@@ -257,7 +282,7 @@ export const LiveMap: React.FC<LiveMapProps> = ({
       blockedPolyline.bindTooltip("HAZARD: ROAD CLOSED (Water Level > 1.2m at Causeway)", { direction: "bottom" });
       blockedPolyline.addTo(group);
     }
-  }, [zones, selectedZoneId, activeLayers, shelters, reports, center]);
+  }, [zones, selectedZoneId, activeLayers, shelters, reports, center, onSelectZone]);
 
   const resetView = () => {
     mapInstanceRef.current?.setView(center, zoom);
@@ -269,7 +294,7 @@ export const LiveMap: React.FC<LiveMapProps> = ({
       <div ref={mapContainerRef} className="w-full h-full min-h-[420px]" />
 
       {/* Layer Toggles Control Panel (Floating Top Right) */}
-      <div className="absolute top-3 right-3 z-400 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md rounded-xl p-2.5 shadow-lg border border-slate-200 dark:border-slate-800 text-xs">
+      <div className="absolute top-3 right-3 z-[400] bg-white/95 dark:bg-slate-900/95 backdrop-blur-md rounded-xl p-2.5 shadow-lg border border-slate-200 dark:border-slate-800 text-xs">
         <div className="flex items-center gap-1.5 font-bold text-slate-800 dark:text-slate-100 mb-2 pb-1 border-b border-slate-200 dark:border-slate-800">
           <Layers className="w-3.5 h-3.5 text-blue-600" />
           <span>GIS Map Layers</span>
@@ -341,7 +366,7 @@ export const LiveMap: React.FC<LiveMapProps> = ({
       </div>
 
       {/* Floating Map Legend (Bottom Left) */}
-      <div className="absolute bottom-3 left-3 z-400 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md rounded-xl p-2.5 shadow-lg border border-slate-200 dark:border-slate-800 text-[11px]">
+      <div className="absolute bottom-3 left-3 z-[400] bg-white/95 dark:bg-slate-900/95 backdrop-blur-md rounded-xl p-2.5 shadow-lg border border-slate-200 dark:border-slate-800 text-[11px]">
         <span className="font-bold text-slate-800 dark:text-slate-200 block mb-1">
           Disaster Risk Legend
         </span>

@@ -12,18 +12,20 @@ import {
   AlertOctagon,
   Search
 } from "lucide-react";
-import { StateProfile } from "../types";
+import { EmergencyServiceItem, StateProfile } from "../types";
 
 interface EmergencyServicesPageProps {
   selectedState: StateProfile;
   selectedDistrict: string;
   onOpenSOS: () => void;
+  services: EmergencyServiceItem[];
 }
 
 export const EmergencyServicesPage: React.FC<EmergencyServicesPageProps> = ({
   selectedState,
   selectedDistrict,
-  onOpenSOS
+  onOpenSOS,
+  services
 }) => {
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -36,7 +38,7 @@ export const EmergencyServicesPage: React.FC<EmergencyServicesPageProps> = ({
     { name: "State Disaster Authority (SDMA)", number: "1070", description: `${selectedState.name} Disaster Management Department`, badge: "State", icon: Building2, color: "bg-indigo-600" }
   ];
 
-  const localFacilities = [
+  const fallbackFacilities = [
     {
       name: "Osmania General Hospital - Emergency Trauma Care",
       type: "Tertiary Hospital",
@@ -72,8 +74,37 @@ export const EmergencyServicesPage: React.FC<EmergencyServicesPageProps> = ({
       phone: "+91-40-21111111",
       tollFree: "040-29555500",
       status: "Command Active"
+    },
+    {
+      name: "Red Cross Telangana Emergency Response",
+      type: "NGO Relief & First Aid",
+      distanceKm: "3.8 km",
+      address: "Himayatnagar, Hyderabad",
+      phone: "+91-40-23223633",
+      status: "Relief Teams Ready"
+    },
+    {
+      name: "Community Kitchen & Relief Supplies",
+      type: "Food & Relief Distribution",
+      distanceKm: "2.6 km",
+      address: "Nampally Relief Supply Centre",
+      phone: "+91-80080-1078",
+      status: "Food Packets Dispatching"
     }
   ];
+
+  const localFacilities = services.length > 0
+    ? services.map(service => ({
+        name: service.name,
+        type: service.category,
+        distanceKm: service.distance,
+        address: service.address || selectedDistrict,
+        phone: service.phone,
+        status: service.status,
+        coordinates: service.coordinates,
+        website: service.website
+      }))
+    : fallbackFacilities;
 
   const filteredFacilities = localFacilities.filter(f =>
     f.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -185,17 +216,25 @@ export const EmergencyServicesPage: React.FC<EmergencyServicesPageProps> = ({
                   </h4>
                   <div className="flex items-center gap-1 text-slate-500 text-[11px] mt-0.5">
                     <MapPin className="w-3 h-3 text-red-500" />
-                    <span>{fac.address} ({fac.distanceKm} km)</span>
+                    <span>{fac.address} ({fac.distanceKm})</span>
                   </div>
                 </div>
 
-                <a
-                  href={`tel:${fac.phone}`}
-                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-xs transition-transform active:scale-95 shrink-0"
-                >
-                  <PhoneCall className="w-3.5 h-3.5" />
-                  <span>Call Now</span>
-                </a>
+                <div className="flex items-center gap-2 shrink-0">
+                  {fac.coordinates && (
+                    <a href={`https://www.google.com/maps/search/?api=1&query=${fac.coordinates[0]},${fac.coordinates[1]}`} target="_blank" rel="noreferrer" className="flex items-center gap-1 rounded-xl border border-slate-300 px-2.5 py-1.5 text-xs font-bold text-slate-700 hover:border-blue-500 hover:text-blue-600 dark:border-slate-600 dark:text-slate-200" title="Open location in Google Maps">
+                      <ExternalLink className="w-3.5 h-3.5" />
+                      <span>Map</span>
+                    </a>
+                  )}
+                  <a
+                    href={`tel:${fac.phone}`}
+                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-xs transition-transform active:scale-95"
+                  >
+                    <PhoneCall className="w-3.5 h-3.5" />
+                    <span>Call Now</span>
+                  </a>
+                </div>
               </div>
 
               <div className="pt-2 border-t border-slate-200 dark:border-slate-700 flex items-center justify-between font-mono text-[11px] text-slate-600 dark:text-slate-400">

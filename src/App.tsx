@@ -534,6 +534,7 @@ function DashboardApp({ onLogout }: { onLogout: () => void }) {
             <EmergencyServicesPage
               services={services}
               onOpenSOS={() => setIsSOSModalOpen(true)}
+              selectedState={selectedState}
               selectedDistrict={selectedDistrict}
             />
           )}

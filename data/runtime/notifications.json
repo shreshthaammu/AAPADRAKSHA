@@ -1,0 +1,46 @@
+[
+  {
+    "id": "NTF-1789132854656",
+    "alertId": "ALT-1789132854654",
+    "recipient": "citizen-all",
+    "title": "Final verification warning",
+    "message": "Avoid low-lying roads",
+    "severity": "EMERGENCY",
+    "timestamp": "2026-09-11T13:20:54.656Z",
+    "read": false,
+    "location": "Hyderabad"
+  },
+  {
+    "id": "NTF-1789132754118",
+    "alertId": "ALT-1789132754114",
+    "recipient": "citizen-all",
+    "title": "Combined extreme rainfall warning",
+    "message": "Move to higher ground and avoid underpasses",
+    "severity": "EMERGENCY",
+    "timestamp": "2026-09-11T13:19:14.118Z",
+    "read": false,
+    "location": "Hyderabad"
+  },
+  {
+    "id": "NTF-1789131637561",
+    "alertId": "ALT-1789131637561",
+    "recipient": "citizen-all",
+    "title": "Backend pipeline verification",
+    "message": "Prepare to move",
+    "severity": "PREPARE",
+    "timestamp": "2026-09-11T13:00:37.561Z",
+    "read": false,
+    "location": "Hyderabad"
+  },
+  {
+    "id": "NTF-1789131501922",
+    "alertId": "ALT-1789131501903",
+    "recipient": "citizen-all",
+    "title": "Lifecycle test warning",
+    "message": "Avoid low-lying roads",
+    "severity": "WATCH",
+    "timestamp": "2026-09-11T12:58:21.922Z",
+    "read": true,
+    "location": "Hyderabad"
+  }
+]

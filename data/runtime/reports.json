@@ -1,0 +1,70 @@
+[
+  {
+    "id": "R-001",
+    "category": "Flooded Road",
+    "location": "Chaderghat Causeway, Musi River",
+    "district": "Hyderabad",
+    "state": "Telangana",
+    "description": "Water level rose 1.5m above causeway road, traffic completely blocked. Police barricading required.",
+    "severity": "CRITICAL",
+    "status": "Verified",
+    "timestamp": "2026-09-09T08:15:00Z",
+    "coordinates": [
+      17.378,
+      78.489
+    ],
+    "reporterName": "K. Venkatesh",
+    "upvotes": 24
+  },
+  {
+    "id": "R-002",
+    "category": "Waterlogging",
+    "location": "Tolichowki Nadeem Colony",
+    "district": "Hyderabad",
+    "state": "Telangana",
+    "description": "Ground floor residential houses inundated up to knee depth (0.6m). Sump pumps failing due to power outage.",
+    "severity": "HIGH",
+    "status": "Under Review",
+    "timestamp": "2026-09-09T08:42:00Z",
+    "coordinates": [
+      17.401,
+      78.409
+    ],
+    "reporterName": "Fatima Begum",
+    "upvotes": 18
+  },
+  {
+    "id": "R-003",
+    "category": "Fallen Tree / Blocked Drain",
+    "location": "SP Road near Begumpet Flyover",
+    "district": "Hyderabad",
+    "state": "Telangana",
+    "description": "Large banyan tree fallen across major stormwater drain causing backflow onto main arterial road.",
+    "severity": "HIGH",
+    "status": "Verified",
+    "timestamp": "2026-09-09T09:05:00Z",
+    "coordinates": [
+      17.4447,
+      78.4664
+    ],
+    "reporterName": "GHMC Ward Scout",
+    "upvotes": 31
+  },
+  {
+    "id": "R-004",
+    "category": "Rising Water",
+    "location": "Moosarambagh Bridge Approach",
+    "district": "Hyderabad",
+    "state": "Telangana",
+    "description": "River Musi current extremely fast, approaching danger marker 512.0m. Cattle and low-lying huts at risk.",
+    "severity": "CRITICAL",
+    "status": "Verified",
+    "timestamp": "2026-09-09T09:20:00Z",
+    "coordinates": [
+      17.3753,
+      78.4744
+    ],
+    "reporterName": "R. Sharma",
+    "upvotes": 42
+  }
+]

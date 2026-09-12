@@ -1,0 +1,10 @@
+timestamp,latitude,longitude,district,state,temperature,feels_like,humidity,wind_speed,wind_direction,pressure,cloud_cover,visibility_km
+2026-09-09T00:00:00Z,17.3850,78.4867,Hyderabad,Telangana,26.4,28.8,88,18.5,WSW,1006.4,94,4.2
+2026-09-09T01:00:00Z,17.3850,78.4867,Hyderabad,Telangana,25.8,28.2,92,22.0,SW,1005.8,98,3.5
+2026-09-09T02:00:00Z,17.3850,78.4867,Hyderabad,Telangana,25.1,27.5,94,26.4,SW,1005.1,100,2.8
+2026-09-09T03:00:00Z,17.3850,78.4867,Hyderabad,Telangana,24.8,27.1,96,28.2,SW,1004.5,100,2.1
+2026-09-09T04:00:00Z,17.3850,78.4867,Hyderabad,Telangana,25.0,27.3,95,24.0,SSW,1005.0,96,3.0
+2026-09-09T00:00:00Z,19.0760,72.8777,Mumbai,Maharashtra,27.2,31.4,92,32.5,W,1003.2,100,2.5
+2026-09-09T01:00:00Z,19.0760,72.8777,Mumbai,Maharashtra,26.8,30.8,95,35.0,WSW,1002.8,100,1.8
+2026-09-09T00:00:00Z,11.6854,76.1320,Wayanad,Kerala,23.5,25.4,98,28.0,WNW,1008.1,100,1.5
+2026-09-09T00:00:00Z,26.1445,91.7362,Kamrup,Assam,26.1,29.8,94,15.2,E,1004.8,98,3.2

@@ -1,0 +1,43 @@
+[
+  {
+    "incidentId": "INC-1789132854699",
+    "type": "CITIZEN_SOS",
+    "location": "Final verification area",
+    "severity": "EMERGENCY",
+    "createdAt": "2026-09-11T13:20:54.699Z",
+    "status": "DISPATCHED",
+    "assignedTeam": "Prototype response team",
+    "responseNotes": "Final verification",
+    "dispatchMode": "SIMULATED_INTERNAL"
+  },
+  {
+    "incidentId": "INC-1789132754131",
+    "type": "CITIZEN_SOS",
+    "location": "Hyderabad citizen test",
+    "coordinates": [
+      17.385,
+      78.4867
+    ],
+    "severity": "EMERGENCY",
+    "createdAt": "2026-09-11T13:19:14.131Z",
+    "status": "ACKNOWLEDGED",
+    "assignedTeam": "Test response team",
+    "responseNotes": "Emergency lifecycle test",
+    "dispatchMode": "SIMULATED_INTERNAL"
+  },
+  {
+    "incidentId": "INC-1789131501996",
+    "type": "CITIZEN_SOS",
+    "location": "Hyderabad Test Area",
+    "coordinates": [
+      17.385,
+      78.4867
+    ],
+    "severity": "EMERGENCY",
+    "createdAt": "2026-09-11T12:58:21.996Z",
+    "status": "NEW",
+    "assignedTeam": "Unassigned emergency response team",
+    "responseNotes": "Test SOS",
+    "dispatchMode": "SIMULATED_INTERNAL"
+  }
+]

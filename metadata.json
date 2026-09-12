@@ -1,0 +1,6 @@
+{
+  "name": "AAPADRAKSHA",
+  "description": "AI/ML-Based Integrated Heavy Rainfall Early Warning and Inundation Prediction System fusing satellite, radar, observational weather, and NWP data.",
+  "requestFramePermissions": ["geolocation"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

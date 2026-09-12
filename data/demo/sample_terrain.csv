@@ -1,0 +1,10 @@
+zone_id,zone_name,district,state,latitude,longitude,elevation_m,slope_deg,distance_to_river_m,drainage_capacity_rating,soil_saturation_pct,impervious_surface_pct
+HYD-Z1,Musi River Basin Zone,Hyderabad,Telangana,17.3753,78.4744,498,1.2,120,POOR,84,78
+HYD-Z2,Hussain Sagar Outflow,Hyderabad,Telangana,17.4239,78.4738,505,1.5,450,MODERATE,76,82
+HYD-Z3,Begumpet Drainage Corridor,Hyderabad,Telangana,17.4447,78.4664,512,2.1,800,POOR,82,88
+HYD-Z4,Banjara Hills Ridge,Hyderabad,Telangana,17.4156,78.4350,545,6.4,2400,GOOD,45,62
+MUM-Z1,Kurla-BKC Lowland,Mumbai,Maharashtra,19.0657,72.8797,4,0.4,180,CRITICAL,92,94
+MUM-Z2,Hindmata Dadar Basin,Mumbai,Maharashtra,19.0178,72.8478,6,0.3,650,CRITICAL,90,95
+MUM-Z3,Malad Subway Zone,Mumbai,Maharashtra,19.1860,72.8485,8,0.8,900,POOR,86,89
+WAY-Z1,Chooralmala Catchment,Wayanad,Kerala,11.5360,76.1750,840,18.5,80,HIGH_RISK_LANDSLIP,98,22
+GHY-Z1,Anil Nagar Flood Corridor,Kamrup,Assam,26.1750,91.7700,52,0.6,220,POOR,89,74

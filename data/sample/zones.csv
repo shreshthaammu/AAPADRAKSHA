@@ -1,0 +1,4 @@
+timestamp,latitude,longitude,district,state,rainfall_1h,rainfall_3h,rainfall_6h,rainfall_12h,rainfall_24h,temperature,humidity,wind_speed,pressure,river_level,elevation,slope,historical_flood,water_depth,flood_probability,risk_label
+2026-09-09T09:42:18+05:30,17.385,78.486,Hyderabad,Telangana,18,43,64,73,82,26.4,84,12,997.2,2.8,510,1.2,1,0.8,72,PREPARE
+2026-09-09T09:42:18+05:30,17.4239,78.4738,Secunderabad,Telangana,25,58,86,96,108,26.1,89,14,996.8,4.1,535,0.8,1,1.2,86,EMERGENCY
+2026-09-09T09:42:18+05:30,17.4849,78.4138,Hyderabad,Telangana,13,32,48,57,64,26.8,81,10,997.6,1.9,560,2.1,0,0.4,54,WATCH

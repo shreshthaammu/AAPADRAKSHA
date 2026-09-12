@@ -1,0 +1,64 @@
+{
+  "modelName": "AAPADRAKSHA Flood Risk Classifier",
+  "modelType": "Trained Logistic Regression",
+  "version": "v1.0.0",
+  "trainedAt": "2026-09-11T12:54:07.715Z",
+  "dataset": "flood_history_2020_2026.csv",
+  "featureNames": [
+    "rainfall_24h_mm",
+    "forecast_6h_mm",
+    "river_level_m",
+    "slope_deg",
+    "soil_saturation_pct",
+    "drainage_impedance_pct"
+  ],
+  "means": [
+    162.54990314285754,
+    56.89246609999935,
+    5.883327428571407,
+    2.5,
+    62.45072742857191,
+    70
+  ],
+  "scales": [
+    69.33785229505318,
+    24.26824830326868,
+    2.4186808086089964,
+    0.001,
+    18.92502502665262,
+    0.001
+  ],
+  "weights": [
+    0.012948497240553797,
+    0.012948497240658621,
+    0.014726325779270228,
+    0,
+    0.013178927436606582,
+    0
+  ],
+  "bias": 3.2418803401077803,
+  "thresholds": {
+    "watch": 0.5,
+    "prepare": 0.7,
+    "emergency": 0.85
+  },
+  "split": {
+    "train": 35000,
+    "validation": 7500,
+    "test": 7500
+  },
+  "metrics": {
+    "validation": {
+      "accuracy": 1,
+      "precision": 1,
+      "recall": 1,
+      "f1": 1
+    },
+    "test": {
+      "accuracy": 0.9994666666666666,
+      "precision": 0.9994666666666666,
+      "recall": 1,
+      "f1": 0.9997332622032541
+    }
+  }
+}

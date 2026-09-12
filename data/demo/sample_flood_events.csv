@@ -1,0 +1,8 @@
+event_id,event_name,year,state,peak_24h_rainfall_mm,max_water_depth_m,affected_population_lakhs,casualties,economic_loss_cr_inr,primary_cause
+FL-2020-HYD,October 2020 Hyderabad Deluge,2020,Telangana,324.5,2.4,14.5,81,5000,Deep depression slow cloudburst over Musi drainage
+FL-2018-KER,August 2018 Great Kerala Floods,2018,Kerala,414.0,4.2,54.0,483,31000,Unprecedented southwest monsoon runoff & dam reservoir releases
+FL-2005-MUM,July 26 2005 Mumbai Cloudburst,2005,Maharashtra,944.2,3.8,85.0,1094,45000,Mesoscale vortex combined with high tide in Mithi River
+FL-2023-GHY,June 2023 Guwahati Urban Inundation,2023,Assam,242.0,1.8,6.2,12,650,Brahmaputra backflow & choked Bharalu channel
+FL-2015-CHE,December 2015 Chennai Inundation,2015,Tamil Nadu,494.0,3.1,38.0,289,20000,Northeast monsoon low-pressure stall & Chembarambakkam release
+FL-2019-PAT,September 2019 Patna Urban Waterlogging,2019,Bihar,185.0,2.1,18.0,42,1200,Ganga river swelling combined with drainage motor failure
+FL-2024-WAY,July 2024 Wayanad Flash Flood Landslip,2024,Kerala,572.0,5.0,2.8,350,2800,Severe cloudburst triggering catastrophic debris flow

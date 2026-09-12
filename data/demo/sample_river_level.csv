@@ -1,0 +1,8 @@
+timestamp,river_name,basin,station_name,district,state,current_level_m,warning_level_m,danger_level_m,hfl_highest_flood_level,trend,discharge_cusecs
+2026-09-09T03:00:00Z,Musi,Krishna,Moosarambagh,Hyderabad,Telangana,512.4,510.5,512.0,514.8,RISING,34500
+2026-09-09T03:00:00Z,Musi,Krishna,Chaderghat,Hyderabad,Telangana,509.8,508.0,509.5,512.1,RISING,38200
+2026-09-09T03:00:00Z,Mithi,Arabian Sea Coast,BKC Bridge,Mumbai,Maharashtra,3.85,3.20,3.60,4.20,RISING,18400
+2026-09-09T03:00:00Z,Kabini,Cauvery,Mananthavady,Wayanad,Kerala,756.2,754.0,755.5,758.0,STEADY,42000
+2026-09-09T03:00:00Z,Brahmaputra,Brahmaputra,Guwahati,Kamrup,Assam,50.12,49.68,50.50,51.46,RISING,112000
+2026-09-09T03:00:00Z,Ganga,Ganga,Digha Ghat,Patna,Bihar,50.32,49.50,50.20,52.52,RISING,98000
+2026-09-09T03:00:00Z,Adyar,Bay of Bengal Coast,Saidapet,Chennai,Tamil Nadu,6.4,5.8,6.5,7.9,RISING,26500
